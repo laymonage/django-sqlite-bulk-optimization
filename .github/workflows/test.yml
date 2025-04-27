@@ -18,6 +18,7 @@ jobs:
         django:
           - "Django"
           - "git+https://github.com/django/django.git@stable/5.2.x#egg=Django"
+          - "git+https://github.com/laymonage/django.git@ticket_36143#egg=Django"
           - ${{ inputs.django ||'git+https://github.com/django/django.git@main#egg=Django' }}
 
     steps:
