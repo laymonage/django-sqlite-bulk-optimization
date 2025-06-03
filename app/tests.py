@@ -10,9 +10,9 @@ class NoteTestCase(TestCase):
     def setUpTestData(cls):
         cls.notes = [
             Note(title=f"Test Note {i}", content="This is a test note.")
-            for i in range(2**12)
+            for i in range(2**14)
         ]
 
     def test_note_creation(self):
-        with self.assertNumQueries(1):
+        with self.assertNumQueries(2):
             Note.objects.bulk_create(self.notes)
