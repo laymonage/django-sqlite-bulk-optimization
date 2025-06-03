@@ -16,9 +16,15 @@ jobs:
       fail-fast: false
       matrix:
         django:
+          # Latest stable Django release
           - "Django"
+          # Django 5.2.x branch
           - "git+https://github.com/django/django.git@stable/5.2.x#egg=Django"
+          # PR to reduce the number of bulk queries executed by the ORM
           - "git+https://github.com/laymonage/django.git@ticket_36143#egg=Django"
+          # PR to fix eager SQL formatting that slows down assertNumQueries
+          - "git+https://github.com/nessita/django.git@ticket-36380-take-2#egg=Django"
+          # Custom input, defaults to the main branch of the Django repository
           - ${{ inputs.django ||'git+https://github.com/django/django.git@main#egg=Django' }}
 
     steps:
